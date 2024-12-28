@@ -348,6 +348,8 @@ Add the following txt record:
 Domain:_acme-challenge.www.example.com
 Txt value:9ihDbjxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 (如果是多个域名，会出现多行域名和TXT，例如
+Domain:_acme-challenge.tt.org
+Txt value:7i8Dbjxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 Domain:_acme-challenge.www.tt.org
 Txt value:8i3Dbjxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 Domain:_acme-challenge.ai.tt.org
