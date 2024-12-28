@@ -329,7 +329,12 @@ See: https://github.com/acmesh-official/acme.sh/wiki/dns-manual-mode first.
 If your dns provider doesn't support any api access, you can add the txt record by hand.
 
 ```bash
-acme.sh --issue --dns -d example.com -d www.example.com -d cp.example.com
+acme.sh --issue -d example.com --dns \
+ --yes-I-know-dns-manual-mode-enough-go-ahead-please
+(可以多个域名：
+acme.sh --issue -d tt.org -d www.tt.org -d ai.tt.org --dns \
+ --yes-I-know-dns-manual-mode-enough-go-ahead-please
+)
 ```
 
 You should get an output like below:
@@ -342,15 +347,29 @@ Txt value:9ihDbjYfTExAYeDs4DBUeuTo18KBzwvTEjUnSwd32-c
 Add the following txt record:
 Domain:_acme-challenge.www.example.com
 Txt value:9ihDbjxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
+(如果是多个域名，会出现多行域名和TXT，例如
+Domain:_acme-challenge.www.tt.org
+Txt value:8i3Dbjxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Domain:_acme-challenge.ai.tt.org
+Txt value:6i2Ubjxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+）
 Please add those txt records to the domains. Waiting for the dns to take effect.
 ```
+(需要在域名解析里对应增加多条_acme-challenge的txt记录，例如：
+_acme-challenge    txt记录   对应【tt.org]
+_acme-challenge.www  txt记录   对应【www.tt.org]
+_acme-challenge.ai  txt记录   对应【ai.tt.org]
+)
 
 Then just rerun with `renew` argument:
 
 ```bash
-acme.sh --renew -d example.com
+acme.sh --renew -d example.com --yes-I-know-dns-manual-mode-enough-go-ahead-please
+（可以多个域名：
+acme.sh --renew -d tt.org -d www.tt.org -d ai.tt.org \
+  --yes-I-know-dns-manual-mode-enough-go-ahead-please）
 ```
+)
 
 Ok, it's done.
 
