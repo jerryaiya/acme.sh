@@ -231,6 +231,13 @@ acme.sh --install-cert -d example.com \
 --fullchain-file /path/to/fullchain/nginx/cert.pem \
 --reloadcmd     "service nginx force-reload"
 ```
+(#举例：
+acme.sh --install-cert -d tt.org \
+--key-file       /etc/nginx/.../key.pem  \
+--fullchain-file /etc/nginx/.../cert.pem
+#)
+
+
 
 Only the domain is required, all the other parameters are optional.
 
