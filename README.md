@@ -231,10 +231,23 @@ acme.sh --install-cert -d example.com \
 --fullchain-file /path/to/fullchain/nginx/cert.pem \
 --reloadcmd     "service nginx force-reload"
 ```
-(#举例：
+(#举例：每次只能执行一个域名，如果写多个域名，只能按顺序执行第一个域名
+后面的不会执行，在浏览器会发现后面的证书实际没有更新。
 acme.sh --install-cert -d tt.org \
 --key-file       /etc/nginx/.../key.pem  \
 --fullchain-file /etc/nginx/.../cert.pem
+
+acme.sh --install-cert -d a.tt.org \
+--key-file       /etc/nginx/.../key.pem  \
+--fullchain-file /etc/nginx/.../cert.pem
+
+acme.sh --install-cert -d b.tt.org \
+--key-file       /etc/nginx/.../key.pem  \
+--fullchain-file /etc/nginx/.../cert.pem
+
+最后都需要执行：
+systemctl restart nginx
+
 #)
 
 
